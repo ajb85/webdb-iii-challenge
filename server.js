@@ -11,6 +11,6 @@ server.get("/", (req, res) => {
   res.status(200).send("OK");
 });
 
-server.use("/api/zoos", cohortRoutes);
+server.use("/api/cohorts", cohortRoutes);
 
 module.exports = server;
