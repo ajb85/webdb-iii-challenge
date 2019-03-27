@@ -50,6 +50,20 @@ routes.get("/:id", async (req, res) => {
   }
 });
 
+routes.get("/:id/students", async (req, res) => {
+  try {
+    const cohortStudents = await db("students").where({
+      cohort_id: req.params.id
+    });
+    cohortStudents
+      ? res.status(200).json(cohortStudents)
+      : res.status(404).json({ message: "No cohort with that ID" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "There was an error retriving that ID" });
+  }
+});
+
 routes.delete("/:id", async (req, res) => {
   try {
     const count = await db("cohorts")
