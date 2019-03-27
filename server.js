@@ -1,6 +1,7 @@
 const express = require("express");
 const helmet = require("helmet");
 const cohortRoutes = require("./cohorts/routes.js");
+const studentRoutes = require("./students/routes.js");
 
 const server = express();
 
@@ -12,5 +13,6 @@ server.get("/", (req, res) => {
 });
 
 server.use("/api/cohorts", cohortRoutes);
+server.use("/api/students", studentRoutes);
 
 module.exports = server;
